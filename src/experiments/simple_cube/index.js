@@ -3,7 +3,7 @@ import { useFrame } from 'react-three-fiber';
 
 
 
-const SimpleCube = () => {
+const Thing = () => {
 
    const meshRef = useRef();
    useFrame(() => (meshRef.current.rotation.x = meshRef.current.rotation.y += 0.02));
@@ -20,4 +20,4 @@ const SimpleCube = () => {
     )
 }
 
-export default SimpleCube
+export default Thing

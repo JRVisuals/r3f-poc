@@ -1,6 +1,5 @@
-import React, { useRef } from 'react'
-import ReactDOM from 'react-dom'
-import { Canvas, useFrame } from 'react-three-fiber'
+import React from 'react'
+import { Canvas } from 'react-three-fiber'
 
 import Thing from './Thing'
 

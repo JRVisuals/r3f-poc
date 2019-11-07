@@ -1,18 +1,13 @@
 
 import React from 'react'
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useLocation} from "react-router";
 
 import CanvasContainer from './components/CanvasContainer'
 import './App.css'
 
-import {SimpleCube} from './experiments/'
-import { NOTFOUND } from 'dns';
+import {ExperimentList} from './experiments/'
 
-const ExperimentList = {
-    cube: <SimpleCube/>,
-    two: <SimpleCube/>,
-}
 
 // TODO : Break this out into a view. Generate a TOC based on barrel?
 const Home = () => {

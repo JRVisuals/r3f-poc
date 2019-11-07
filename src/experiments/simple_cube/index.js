@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, {useRef} from 'react'
 import { useFrame } from 'react-three-fiber';
 
@@ -6,12 +5,12 @@ import { useFrame } from 'react-three-fiber';
 
 const SimpleCube = () => {
 
-   const ref = useRef();
-   useFrame(() => (ref.current.rotation.x = ref.current.rotation.y += 0.01));
+   const meshRef = useRef();
+   useFrame(() => (meshRef.current.rotation.x = meshRef.current.rotation.y += 0.02));
 
     return (
         <mesh
-            ref={ref}
+            ref={meshRef}
             onClick={e => console.log('click')}
             onPointerOver={e => console.log('hover')}
             onPointerOut={e => console.log('unhover')}>

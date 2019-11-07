@@ -1,8 +1,7 @@
 .App {
-    display: block;
+  display: block;
   text-align: center;
   background-color: #222;
   color: #fff;
-  height: 400px;
-  width: 400px;
+  height: 100vh
 }

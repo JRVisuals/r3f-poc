@@ -1,4 +1,4 @@
-import * as THREE from 'three'
+import * as THREE from 'three';
 
 export default {
   uniforms: {
@@ -8,12 +8,16 @@ export default {
     decay: { value: 0.95 },
     density: { value: 1.0 },
     weight: { value: 0.4 },
-    samples: { value: 50 }
+    samples: { value: 50 },
   },
 
-  vertexShader: ['varying vec2 vUv;', 'void main() {', 'vUv = uv;', 'gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );', '}'].join(
-    '\n'
-  ),
+  vertexShader: [
+    'varying vec2 vUv;',
+    'void main() {',
+    'vUv = uv;',
+    'gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );',
+    '}',
+  ].join('\n'),
 
   fragmentShader: [
     'varying vec2 vUv;',
@@ -44,6 +48,6 @@ export default {
     'illuminationDecay *= decay;',
     '}',
     'gl_FragColor = color * exposure;',
-    '}'
-  ].join('\n')
-}
+    '}',
+  ].join('\n'),
+};

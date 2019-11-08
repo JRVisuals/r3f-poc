@@ -1,14 +1,16 @@
-import React from 'react'
-import { Canvas } from 'react-three-fiber'
+import React from 'react';
+import { Canvas } from 'react-three-fiber';
 
+const CanvasContainer = props => {
+  return (
+    <Canvas
+      style={{ background: '#777777' }}
+      shadowMap
+      camera={{ position: [0, 0, 10] }}
+    >
+      {props.children}
+    </Canvas>
+  );
+};
 
-const CanvasContainer = (props) => {
-
-    return (
-        <Canvas style={{ background: "#777777" }} shadowMap camera={{ position: [0, 0, 10] }}>
-            {props.children}
-        </Canvas>
-    )
-}
-
-export default CanvasContainer
+export default CanvasContainer;

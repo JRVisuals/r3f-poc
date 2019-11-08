@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useFrame } from 'react-three-fiber';
 
-const Thing = () => {
+export const AnotherCubeExperiment = () => {
   const cubeZero = useRef();
   useFrame(() => (cubeZero.current.rotation.x += 0.04));
   const cubeOne = useRef();
@@ -86,4 +86,8 @@ const Thing = () => {
   );
 };
 
-export default Thing;
+export default {
+  id: 'cube_plus',
+  name: 'Another Cube',
+  component: AnotherCubeExperiment,
+};

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useFrame } from 'react-three-fiber';
 
-const Thing = () => {
+export const SimpleCubeExperiment = () => {
   const meshRef = useRef();
   useFrame(
     () => (meshRef.current.rotation.x = meshRef.current.rotation.y += 0.02)
@@ -20,4 +20,8 @@ const Thing = () => {
   );
 };
 
-export default Thing;
+export default {
+  id: 'simple_cube',
+  name: 'Simple Cube',
+  component: SimpleCubeExperiment,
+};

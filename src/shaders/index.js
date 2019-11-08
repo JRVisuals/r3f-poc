@@ -1,4 +1,4 @@
-import AdditiveBlendingShader from './AdditiveBlendingShader'
-import VolumetricLightShader from './VolumetricLightShader'
+import AdditiveBlendingShader from './AdditiveBlendingShader';
+import VolumetricLightShader from './VolumetricLightShader';
 
-export { AdditiveBlendingShader, VolumetricLightShader }
+export { AdditiveBlendingShader, VolumetricLightShader };

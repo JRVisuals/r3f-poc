@@ -22,6 +22,10 @@ export const SimpleCubeExperiment = () => {
 
 export default {
   id: 'simple_cube',
-  name: 'Simple Cube',
+  metadata:{
+    name: 'Simple Cube',
+    author: '',
+    description: 'That most basic cube used as an example on the R3F repo.',
+  },
   component: SimpleCubeExperiment,
 };

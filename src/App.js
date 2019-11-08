@@ -3,29 +3,14 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  NavLink,
 } from 'react-router-dom';
 
-import CanvasContainer from './components/CanvasContainer';
+import ExperimentLinks from './components/ExperimentLinks';
+import CanvasContainer from './components/CanvasContainer/';
 import './App.css';
 
 import experiments from './experiments/';
 
-const ExperimentLinks = ({ experiments }) => {
-  return (
-    <div className="ExperimentLinks">
-      {experiments.map(({ id, name }, index) => (
-        <NavLink
-          key={`experiment-link-${id}`}
-          className="ExperimentLinks__Link"
-          to={`/experiments/${id}`}
-        >
-          {name}
-        </NavLink>
-      ))}
-    </div>
-  );
-};
 
 const NotFound = ({ id }) => {
   return (
@@ -43,12 +28,19 @@ const Experiment = ({ id }) => {
     return <NotFound id={id} />;
   }
 
-  const { component: Component } = experiment;
+  const { component: Component, metadata } = experiment;
 
   return (
-    <CanvasContainer>
-      <Component />
-    </CanvasContainer>
+    <div className="App__Content">
+      <div className="Experiment__Metadata">
+        <span className="Experiment__Name">{metadata.name}</span>
+        <span className="Experiment__Author">{metadata.author}</span>
+        <span className="Experiment__Description">{metadata.description}</span>
+      </div>
+      <CanvasContainer>
+        <Component />
+      </CanvasContainer>
+    </div>
   );
 };
 
@@ -57,17 +49,14 @@ const App = () => {
     <Router>
       <div className="App">
         <br />
-        <h1>Experiments in</h1>
-        <h2>react-three-fiber</h2>
+        <h2>Experiments in react-three-fiber</h2>
         <ExperimentLinks experiments={experiments} />
-        <div className="App__Content">
           <Switch>
             <Route
               path="/experiments/:id"
               render={({ match }) => <Experiment id={match.params.id} />}
             />
           </Switch>
-        </div>
       </div>
     </Router>
   );

@@ -1,0 +1,6 @@
+.outer {
+    display: flex;
+    flex-grow: 2;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}

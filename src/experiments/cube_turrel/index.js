@@ -103,6 +103,10 @@ export const TurrelCubeExperiment = () => {
 
 export default {
   id: 'cube_turrel',
-  name: 'Turrel Cube',
+  metadata:{
+    name: 'Turrel Cube',
+    author: 'JoskerDu',
+    description: 'An ode to James Turrell. Specifically the installation "Catso, Red" at the Mattress Factory in Pittsburgh, PA.',
+  },
   component: TurrelCubeExperiment,
 };

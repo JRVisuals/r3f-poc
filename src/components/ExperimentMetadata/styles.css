@@ -1,0 +1,25 @@
+
+.Experiment__Metadata{
+    position: absolute;
+    z-index: 100;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    min-width: 500px;
+  }
+  .Experiment__Name{
+    font-weight: bold;
+    font-size: 1em;
+  }
+  .Experiment__Author{
+    font-style: italic;
+    font-size: 1em;
+  }
+  .Experiment__Description{
+    font-size: 0.8em;
+    min-width: 400px;
+  }

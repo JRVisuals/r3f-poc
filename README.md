@@ -1,5 +1,8 @@
 ## Purpose of this Repo
 Just a place to mess around with this tech. According to the developers R3F could be faster than standalone 3JS and has the benefit of modern React composition [and hooks](https://github.com/react-spring/react-three-fiber#hooks). Note also that this can be implemented for [React Native using expo](https://github.com/react-spring/react-three-fiber/blob/master/recipes.md#usage-with-react-native). Not sure if this implementation has any benefits over useing raw 3JS in that case -- again, other than the built in component. I believe that even with R3F you can manipulate lower level 3JS if needed. 
+
+![Sample Experiment Image](https://repository-images.githubusercontent.com/220111814/f8829700-0218-11ea-9ee4-b6a022be385d "R3F-POC")
+
  
 ## Navigating Experiments
 

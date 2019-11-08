@@ -1,68 +1,75 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { useLocation } from 'react-router';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  NavLink,
+} from 'react-router-dom';
 
 import CanvasContainer from './components/CanvasContainer';
 import './App.css';
 
-import { ExperimentList } from './experiments/';
+import experiments from './experiments/';
 
-// TODO : Break this out into a view. Generate a TOC based on barrel?
-const Home = () => {
+const ExperimentLinks = ({ experiments }) => {
   return (
-    <div>
-      <br />
-      <h1>Experiments in</h1>
-      <h2>react-three-fiber</h2>
-      <h3>Locations follow this pattern</h3>
-      <code>/experiment/_name_</code>
+    <div className="ExperimentLinks">
+      {experiments.map(({ id, name }, index) => (
+        <NavLink
+          key={`experiment-link-${id}`}
+          className="ExperimentLinks__Link"
+          to={`/experiments/${id}`}
+        >
+          {name}
+        </NavLink>
+      ))}
     </div>
   );
 };
 
-const getNotFoundMarkup = id => {
+const NotFound = ({ id }) => {
   return (
-    <div>
-      <br />
-      <h1>Experiments in</h1>
-      <h2>react-three-fiber</h2>
-      <h3>Locations follow this pattern</h3>
-      <code>/experiment/_name_</code>
-      <br />
-      <br />
-      <h3 style={{ color: 'red' }}>
-        Experiment <div style={{ display: 'inline', color: 'white' }}>{id}</div>{' '}
-        not found.
-      </h3>
-      <br />
-    </div>
+    <h3 style={{ color: 'red' }}>
+      Experiment <div style={{ display: 'inline', color: 'white' }}>{id}</div>{' '}
+      not found.
+    </h3>
   );
 };
 
-const Experiment = () => {
-  let location = useLocation();
-  let id = location.pathname.split('/')[2];
-  let content = ExperimentList[id];
+const Experiment = ({ id }) => {
+  const experiment = experiments.find(e => e.id === id);
 
-  let ExpRender = content ? (
-    <CanvasContainer>{content}</CanvasContainer>
-  ) : (
-    getNotFoundMarkup(id)
+  if (!experiment) {
+    return <NotFound id={id} />;
+  }
+
+  const { component: Component } = experiment;
+
+  return (
+    <CanvasContainer>
+      <Component />
+    </CanvasContainer>
   );
-
-  return ExpRender;
 };
 
 const App = () => {
   return (
-    <div className="App">
-      <Router>
-        <Switch>
-          <Route path="/experiment" component={Experiment} />
-          <Route path="/" component={Home} />
-        </Switch>
-      </Router>
-    </div>
+    <Router>
+      <div className="App">
+        <br />
+        <h1>Experiments in</h1>
+        <h2>react-three-fiber</h2>
+        <ExperimentLinks experiments={experiments} />
+        <div className="App__Content">
+          <Switch>
+            <Route
+              path="/experiments/:id"
+              render={({ match }) => <Experiment id={match.params.id} />}
+            />
+          </Switch>
+        </div>
+      </div>
+    </Router>
   );
 };
 export default App;

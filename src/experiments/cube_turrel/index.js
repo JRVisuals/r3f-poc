@@ -4,7 +4,8 @@ import { useFrame } from 'react-three-fiber';
 const angToRad = ang => {
   return (ang * Math.PI) / 180;
 };
-const Thing = () => {
+
+export const TurrelCubeExperiment = () => {
   const cubeZero = useRef();
   useFrame(() => (cubeZero.current.rotation.x += 0.04));
   const cubeOne = useRef();
@@ -100,4 +101,8 @@ const Thing = () => {
   );
 };
 
-export default Thing;
+export default {
+  id: 'cube_turrel',
+  name: 'Turrel Cube',
+  component: TurrelCubeExperiment,
+};

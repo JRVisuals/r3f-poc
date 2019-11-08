@@ -5,7 +5,7 @@ const angToRad = ang => {
   return (ang * Math.PI) / 180;
 };
 
-export const TurrelCubeExperiment = () => {
+export const TurrellCubeExperiment = () => {
   const cubeZero = useRef();
   useFrame(() => (cubeZero.current.rotation.x += 0.04));
   const cubeOne = useRef();
@@ -23,14 +23,14 @@ export const TurrelCubeExperiment = () => {
     <group>
       <ambientLight
       color="red"
-      intensity={0.25}
+      intensity={0}
       />
       <spotLight
         color="red"
         intensity={0.35}
-        position={[0, 0, 2.5]}
-        angle={1.5}
-        penumbra={1}
+        position={[0, -0.2, 2.75]}
+        angle={1}
+        penumbra={0.5}
         shadow-mapSize-width={2048}
         shadow-mapSize-height={2048}
         castShadow
@@ -109,7 +109,7 @@ export const TurrelCubeExperiment = () => {
 };
 
 export default {
-  id: 'cube_turrel',
-  name: 'Turrel Cube',
-  component: TurrelCubeExperiment,
+  id: 'cube_turrell',
+  name: 'Turrell Cube',
+  component: TurrellCubeExperiment,
 };

@@ -27,8 +27,8 @@ export const TurrelCubeExperiment = () => {
       />
       <spotLight
         color="red"
-        intensity={0.5}
-        position={[0, 0, 2.0]}
+        intensity={0.35}
+        position={[0, 0, 2.5]}
         angle={1.5}
         penumbra={1}
         shadow-mapSize-width={2048}
@@ -38,7 +38,7 @@ export const TurrelCubeExperiment = () => {
 
       <spotLight
       color="red"
-      intensity={0.25}
+      intensity={0.2}
       position={[0, 0, 5.0]}
       angle={1.5}
       penumbra={1}    
@@ -60,9 +60,9 @@ export const TurrelCubeExperiment = () => {
           <meshPhongMaterial
             attach="material"
             color="#FFF"
-            opacity={0.5}
+            opacity={0.4}
             transparent
-            shininess={15}
+            shininess={30}
             specular="#F00"
           />
         </mesh>
@@ -74,7 +74,7 @@ export const TurrelCubeExperiment = () => {
             color="#FFF"
             shininess={5}
             specular="#F00"
-            opacity={0.5}
+            opacity={0.3}
             transparent
           />
         </mesh>

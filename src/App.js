@@ -6,7 +6,9 @@ import {
 } from 'react-router-dom';
 
 import ExperimentLinks from './components/ExperimentLinks';
+import ExperimentMetadata from './components/ExperimentMetadata';
 import CanvasContainer from './components/CanvasContainer/';
+
 import './App.css';
 
 import experiments from './experiments/';
@@ -22,6 +24,7 @@ const NotFound = ({ id }) => {
 };
 
 const Experiment = ({ id }) => {
+  
   const experiment = experiments.find(e => e.id === id);
 
   if (!experiment) {
@@ -32,11 +35,7 @@ const Experiment = ({ id }) => {
 
   return (
     <div className="App__Content">
-      <div className="Experiment__Metadata">
-        <span className="Experiment__Name">{metadata.name}</span>
-        <span className="Experiment__Author">{metadata.author}</span>
-        <span className="Experiment__Description">{metadata.description}</span>
-      </div>
+      <ExperimentMetadata metadata={metadata} />
       <CanvasContainer>
         <Component />
       </CanvasContainer>

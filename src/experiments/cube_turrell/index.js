@@ -112,7 +112,7 @@ export default {
   id: 'cube_turrel',
   component: TurrellCubeExperiment,
   metadata:{
-    name: 'Turrel Cube',
+    name: 'Turrell Cube',
     author: 'JoskerDu',
     description: 'An ode to James Turrell. Specifically the installation "Catso, Red" at the Mattress Factory in Pittsburgh, PA.',
   },

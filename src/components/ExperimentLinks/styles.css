@@ -1,0 +1,19 @@
+
+.ExperimentLinks {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .ExperimentLinks__Link {
+    margin: 1rem 0.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #888;
+  }
+  
+  .ExperimentLinks__Link.active {
+    color: #fff;
+  }
+  

@@ -88,10 +88,10 @@ export const AnotherCubeExperiment = () => {
 
 export default {
   id: 'cube_plus',
+  component: AnotherCubeExperiment,
   metadata:{
     name: 'Another Cube',
     author: 'JoskerDu',
     description: '',
   },
-  component: AnotherCubeExperiment,
 };

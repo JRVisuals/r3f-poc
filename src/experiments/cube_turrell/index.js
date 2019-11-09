@@ -5,7 +5,7 @@ const angToRad = ang => {
   return (ang * Math.PI) / 180;
 };
 
-export const TurrelCubeExperiment = () => {
+export const TurrellCubeExperiment = () => {
   const cubeZero = useRef();
   useFrame(() => (cubeZero.current.rotation.x += 0.04));
   const cubeOne = useRef();
@@ -21,53 +21,60 @@ export const TurrelCubeExperiment = () => {
 
   return (
     <group>
+      <ambientLight
+      color="red"
+      intensity={0}
+      />
       <spotLight
         color="red"
-        intensity={1}
-        position={[0, 0, 2]}
-        angle={1.25}
-        penumbra={1}
+        intensity={0.35}
+        position={[0, -0.2, 2.75]}
+        angle={1}
+        penumbra={0.5}
         shadow-mapSize-width={2048}
         shadow-mapSize-height={2048}
         castShadow
       />
 
+      <spotLight
+      color="red"
+      intensity={0.2}
+      position={[0, 0, 5.0]}
+      angle={1.5}
+      penumbra={1}    
+      />
+
       <group ref={cubes}>
-        <mesh
-          castShadow
-          ref={cubeZero}
-          onClick={e => console.log('click')}
-          onPointerOver={e => console.log('hover')}
-          onPointerOut={e => console.log('unhover')}
-        >
+        <mesh ref={cubeZero} castShadow >
           <boxBufferGeometry attach="geometry" args={[1.0, 1.0, 1.0]} />
-          <meshPhongMaterial attach="material" color="#FF7744" />
+          <meshPhongMaterial 
+            attach="material"
+            color="#FFF"
+            shininess={30}
+            specular="#F00"
+          />
         </mesh>
-        <mesh
-          ref={cubeOne}
-          onClick={e => console.log('click')}
-          onPointerOver={e => console.log('hover')}
-          onPointerOut={e => console.log('unhover')}
-        >
+
+        <mesh ref={cubeOne}>
           <boxBufferGeometry attach="geometry" args={[2.5, 2.5, 2.5]} />
           <meshPhongMaterial
             attach="material"
-            color="#AAFFDD"
-            opacity={0.5}
+            color="#FFF"
+            opacity={0.4}
             transparent
+            shininess={30}
+            specular="#F00"
           />
         </mesh>
-        <mesh
-          ref={cubeTwo}
-          onClick={e => console.log('click')}
-          onPointerOver={e => console.log('hover')}
-          onPointerOut={e => console.log('unhover')}
-        >
+
+        <mesh ref={cubeTwo}>
           <boxBufferGeometry attach="geometry" args={[5, 5, 5]} />
           <meshPhongMaterial
             attach="material"
-            color="#AABBFF"
-            opacity={0.25}
+            color="#FFF"
+            shininess={5}
+            specular="#F00"
+            opacity={0.3}
             transparent
           />
         </mesh>
@@ -78,7 +85,7 @@ export const TurrelCubeExperiment = () => {
         rotation={[0, angToRad(45), 0]}
       >
         <planeBufferGeometry attach="geometry" args={[1000, 1000]} />
-        <meshPhongMaterial attach="material" color="#555555" />
+        <meshPhongMaterial attach="material" color="#555" />
       </mesh>
       <mesh
         receiveShadow
@@ -86,7 +93,7 @@ export const TurrelCubeExperiment = () => {
         rotation={[0, angToRad(-45), 0]}
       >
         <planeBufferGeometry attach="geometry" args={[1000, 1000]} />
-        <meshPhongMaterial attach="material" color="#555555" />
+        <meshPhongMaterial attach="material" color="#555" />
       </mesh>
 
       <mesh
@@ -95,7 +102,7 @@ export const TurrelCubeExperiment = () => {
         rotation={[angToRad(-45), 0, 0]}
       >
         <planeBufferGeometry attach="geometry" args={[1000, 1000]} />
-        <meshPhongMaterial attach="material" color="#220000" />
+        <meshPhongMaterial attach="material" color="#444" />
       </mesh>
     </group>
   );
@@ -103,10 +110,10 @@ export const TurrelCubeExperiment = () => {
 
 export default {
   id: 'cube_turrel',
+  component: TurrellCubeExperiment,
   metadata:{
     name: 'Turrel Cube',
     author: 'JoskerDu',
     description: 'An ode to James Turrell. Specifically the installation "Catso, Red" at the Mattress Factory in Pittsburgh, PA.',
   },
-  component: TurrelCubeExperiment,
 };

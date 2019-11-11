@@ -13,12 +13,27 @@ import './App.css';
 
 import experiments from './experiments/';
 
+const BasicHeader = () => {
+  return(
+    <React.Fragment>
+        <br />
+        <h2>Experiments in react-three-fiber</h2>
+        <ExperimentLinks experiments={experiments} />
+    </React.Fragment>
+  )
+}
+
 const NotFound = ({ id }) => {
   return (
-    <h3 style={{ color: 'red' }}>
-      Experiment <div style={{ display: 'inline', color: 'white' }}>{id}</div>{' '}
+    <React.Fragment>
+      <div className="App__Header">
+        <BasicHeader />
+        <h3 style={{ color: 'red' }}>
+          Experiment <div style={{ display: 'inline', color: 'white' }}>{id}</div>{' '}
       not found.
-    </h3>
+        </h3>
+      </div>
+    </React.Fragment>
   );
 };
 
@@ -33,18 +48,16 @@ const Experiment = ({ id, fullScreen }) => {
   const { component: Component, metadata } = experiment;
 
   const headerContent = fullScreen ? 
-      <div>
+      <React.Fragment>
         <ExperimentMetadata id={id} metadata={metadata} fullscreen/>
-      </div>
+      </React.Fragment>
       :
-      <div>
+      <React.Fragment>
         <div className="App__Header">
-        <br />
-        <h2>Experiments in react-three-fiber</h2>
-        <ExperimentLinks experiments={experiments} />
+          <BasicHeader />
         </div>
         <ExperimentMetadata id={id} metadata={metadata} />
-      </div>
+      </React.Fragment>
  
 
   return (
@@ -72,6 +85,10 @@ const App = () => {
               path="/experiments/:id"
               render={({ match }) => <Experiment id={match.params.id} />}
             />
+            <Route
+            path="/"
+            render={({ match }) => <Experiment id={match.params.id} />}
+          />
           </Switch>
       </div>
     </Router>

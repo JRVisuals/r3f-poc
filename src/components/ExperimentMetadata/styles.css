@@ -9,17 +9,38 @@
     text-align: left;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
-    min-width: 500px;
   }
-  .Experiment__Name{
-    font-weight: bold;
-    font-size: 1em;
-  }
-  .Experiment__Author{
-    font-style: italic;
-    font-size: 1em;
-  }
-  .Experiment__Description{
-    font-size: 0.8em;
-    min-width: 400px;
-  }
+
+.Experiment__FullScreenButton{
+  height: 36px;
+  width: 36px;
+  padding: 0;
+}
+
+.Experiment__Content{
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  align-items: center;
+}
+
+.Experiment__Text{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: left;
+    margin-left: 15px;
+}  
+
+.Experiment__Name{
+  font-weight: bold;
+  font-size: 1em;
+}
+.Experiment__Author{
+  font-style: italic;
+  font-size: 1em;
+}
+.Experiment__Description{
+  font-size: 0.8em;
+  min-width: 400px;
+}

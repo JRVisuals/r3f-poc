@@ -13,7 +13,6 @@ import './App.css';
 
 import experiments from './experiments/';
 
-
 const NotFound = ({ id }) => {
   return (
     <h3 style={{ color: 'red' }}>
@@ -23,7 +22,7 @@ const NotFound = ({ id }) => {
   );
 };
 
-const Experiment = ({ id }) => {
+const Experiment = ({ id, fullScreen }) => {
   
   const experiment = experiments.find(e => e.id === id);
 
@@ -33,24 +32,42 @@ const Experiment = ({ id }) => {
 
   const { component: Component, metadata } = experiment;
 
+  const headerContent = fullScreen ? 
+      <div>
+        <ExperimentMetadata id={id} metadata={metadata} fullscreen/>
+      </div>
+      :
+      <div>
+        <div className="App__Header">
+        <br />
+        <h2>Experiments in react-three-fiber</h2>
+        <ExperimentLinks experiments={experiments} />
+        </div>
+        <ExperimentMetadata id={id} metadata={metadata} />
+      </div>
+ 
+
   return (
     <div className="App__Content">
-      <ExperimentMetadata metadata={metadata} />
+      {headerContent}
       <CanvasContainer>
         <Component />
       </CanvasContainer>
     </div>
   );
+
 };
 
 const App = () => {
   return (
     <Router>
       <div className="App">
-        <br />
-        <h2>Experiments in react-three-fiber</h2>
-        <ExperimentLinks experiments={experiments} />
+
           <Switch>
+            <Route
+            path="/experiments/:id/full"
+            render={({ match }) => <Experiment id={match.params.id} fullScreen />}
+            />
             <Route
               path="/experiments/:id"
               render={({ match }) => <Experiment id={match.params.id} />}
@@ -60,4 +77,5 @@ const App = () => {
     </Router>
   );
 };
+
 export default App;

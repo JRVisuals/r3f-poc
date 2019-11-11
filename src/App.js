@@ -13,17 +13,31 @@ import './App.css';
 
 import experiments from './experiments/';
 
+const BasicHeader = () => {
+  return(
+    <React.Fragment>
+        <br />
+        <h2>Experiments in react-three-fiber</h2>
+        <ExperimentLinks experiments={experiments} />
+    </React.Fragment>
+  )
+}
 
 const NotFound = ({ id }) => {
   return (
-    <h3 style={{ color: 'red' }}>
-      Experiment <div style={{ display: 'inline', color: 'white' }}>{id}</div>{' '}
+    <React.Fragment>
+      <div className="App__Header">
+        <BasicHeader />
+        <h3 style={{ color: 'red' }}>
+          Experiment <div style={{ display: 'inline', color: 'white' }}>{id}</div>{' '}
       not found.
-    </h3>
+        </h3>
+      </div>
+    </React.Fragment>
   );
 };
 
-const Experiment = ({ id }) => {
+const Experiment = ({ id, fullScreen }) => {
   
   const experiment = experiments.find(e => e.id === id);
 
@@ -33,31 +47,52 @@ const Experiment = ({ id }) => {
 
   const { component: Component, metadata } = experiment;
 
+  const headerContent = fullScreen ? 
+      <React.Fragment>
+        <ExperimentMetadata id={id} metadata={metadata} fullscreen/>
+      </React.Fragment>
+      :
+      <React.Fragment>
+        <div className="App__Header">
+          <BasicHeader />
+        </div>
+        <ExperimentMetadata id={id} metadata={metadata} />
+      </React.Fragment>
+ 
+
   return (
     <div className="App__Content">
-      <ExperimentMetadata metadata={metadata} />
+      {headerContent}
       <CanvasContainer>
         <Component />
       </CanvasContainer>
     </div>
   );
+
 };
 
 const App = () => {
   return (
     <Router>
       <div className="App">
-        <br />
-        <h2>Experiments in react-three-fiber</h2>
-        <ExperimentLinks experiments={experiments} />
+
           <Switch>
+            <Route
+            path="/experiments/:id/full"
+            render={({ match }) => <Experiment id={match.params.id} fullScreen />}
+            />
             <Route
               path="/experiments/:id"
               render={({ match }) => <Experiment id={match.params.id} />}
             />
+            <Route
+            path="/"
+            render={({ match }) => <Experiment id={match.params.id} />}
+          />
           </Switch>
       </div>
     </Router>
   );
 };
+
 export default App;

@@ -1,9 +1,10 @@
 import React, { Suspense, useRef } from 'react'
 import { useLoader, useFrame } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import eevee from '../../models/ryan.glb'
+import eevee from '../../models/Monster.glb'
 
 // Convert GLTF to GLB https://glb-packer.glitch.me/
+// GLB combines the .GLTF model and the .BIN file into a single data object that can be imported by THREE
 
 const SomeModel = () => {
   const gltf = useLoader(GLTFLoader, eevee)
@@ -28,12 +29,12 @@ export const ModelTest = () => {
       <group>
         <ambientLight
           color="#FFF"
-          intensity={0.25}
+          intensity={0.5}
         />
         <spotLight
           color="#FFF"
           intensity={1.0}
-          position={[0, 20, 20]}
+          position={[0, 20, 100]}
           angle={0.53}
           penumbra={0.75}
           shadow-mapSize-width={2048}
@@ -41,7 +42,7 @@ export const ModelTest = () => {
           castShadow
           receiveShadow
         />
-        <group ref={modelRef} position={[0, 0, 5]}>
+        <group ref={modelRef} position={[0, 0, -60]}>
           <Suspense fallback={<Loader />}>{<SomeModel />}</Suspense> 
         </group>
       </group>

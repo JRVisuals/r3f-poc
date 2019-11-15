@@ -1,7 +1,8 @@
-import React, { Suspense, useRef } from 'react'
+import React, { Suspense, useRef, } from 'react'
+
 import { useLoader, useFrame } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import model_monster from '../../models/Monster.glb'
+
 import model_ryan from '../../models/ryan.glb'
 
 // Convert GLTF to GLB https://glb-packer.glitch.me/
@@ -9,8 +10,23 @@ import model_ryan from '../../models/ryan.glb'
 
 const Model = ({fileRef}) => {
   
+  const modelRef = useRef();
+
   const gltf = useLoader(GLTFLoader, fileRef)
-  return <primitive object={gltf.scene} position={[0, 0, 0]} />
+
+
+  useFrame(() => {
+    modelRef.current.rotation.y += 0.02
+  })
+
+  const modelPos = [0, 0, 4];
+
+  return (
+    <group ref={modelRef} position={modelPos}>
+      <primitive object={gltf.scene} position={[0, 0, 0]} />
+    </group>
+  )
+
 }
 
 // Basic spinning cube loader to display in Suspense
@@ -23,14 +39,9 @@ const Loader = () => {
   )
 }
 
-export const ModelTest = () => {
-
-  const modelRef = useRef();
-  useFrame(() => (modelRef.current.rotation.y += 0.04));
-
-  const randomModelSeed = Math.random();
-  const modelPos = randomModelSeed > 0.5 ? [0, 0, -80] : [0, 0, 4];
-  const modelFile = randomModelSeed > 0.5 ? model_monster : model_ryan;
+export const ModelStatic = () => {
+  
+  const modelFile = model_ryan;
 
     return (
       <group>
@@ -49,20 +60,22 @@ export const ModelTest = () => {
           castShadow
           receiveShadow
         />
-        <group ref={modelRef} position={modelPos}>
-          <Suspense fallback={<Loader />}>{<Model fileRef={modelFile} />}</Suspense> 
-        </group>
+        
+          <Suspense fallback={<Loader />}>
+            <Model fileRef={modelFile}/>
+          </Suspense> 
+  
       </group>
     )
     
 }
 
 export default {
-    id: 'model_test',
-    component: ModelTest,
+    id: 'model_static',
+    component: ModelStatic,
     metadata:{
-      name: 'Load Models',
+      name: 'Model(STATIC)',
       author: '',
-      description: 'Loads one of two random models I.E. The Wonderlulunki or Monster using React.Suspense and external .glb files.',
+      description: 'Loads static model of I.E. The Wonderlulunki using React.Suspense and external .glb files.',
     },
 };

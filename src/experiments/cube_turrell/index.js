@@ -21,10 +21,7 @@ export const TurrellCubeExperiment = () => {
 
   return (
     <group>
-      <ambientLight
-      color="red"
-      intensity={0}
-      />
+      <ambientLight color="red" intensity={0} />
       <spotLight
         color="red"
         intensity={0.35}
@@ -37,17 +34,17 @@ export const TurrellCubeExperiment = () => {
       />
 
       <spotLight
-      color="red"
-      intensity={0.2}
-      position={[0, 0, 5.0]}
-      angle={1.5}
-      penumbra={1}    
+        color="red"
+        intensity={0.2}
+        position={[0, 0, 5.0]}
+        angle={1.5}
+        penumbra={1}
       />
 
       <group ref={cubes}>
-        <mesh ref={cubeZero} castShadow >
+        <mesh ref={cubeZero} castShadow>
           <boxBufferGeometry attach="geometry" args={[1.0, 1.0, 1.0]} />
-          <meshPhongMaterial 
+          <meshPhongMaterial
             attach="material"
             color="#FFF"
             shininess={30}
@@ -111,9 +108,10 @@ export const TurrellCubeExperiment = () => {
 export default {
   id: 'cube_turrel',
   component: TurrellCubeExperiment,
-  metadata:{
+  metadata: {
     name: 'Turrell Cube',
     author: 'JoskerDu',
-    description: 'An ode to James Turrell. Specifically the installation "Catso, Red" at the Mattress Factory in Pittsburgh, PA.',
+    description:
+      'An ode to James Turrell. Specifically the installation "Catso, Red" at the Mattress Factory in Pittsburgh, PA.',
   },
 };

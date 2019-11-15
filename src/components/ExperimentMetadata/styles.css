@@ -12,9 +12,13 @@
   }
 
 .Experiment__FullScreenButton{
-  height: 36px;
-  width: 36px;
+  height: 20px;
+  width: 20px;
   padding: 0;
+}
+
+.dimmed{
+  opacity: 0.5;
 }
 
 .Experiment__Content{
@@ -30,17 +34,27 @@
     align-content: center;
     text-align: left;
     margin-left: 15px;
+    color: #fff;
 }  
+
+.Experiment__Text.active {
+  color: #fff; 
+}
 
 .Experiment__Name{
   font-weight: bold;
   font-size: 1em;
+  color: #fff;
 }
 .Experiment__Author{
   font-style: italic;
   font-size: 1em;
+  color: #fff;
 }
 .Experiment__Description{
   font-size: 0.8em;
   min-width: 400px;
 }
+
+
+

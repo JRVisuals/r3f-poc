@@ -3,27 +3,26 @@ import React, { Suspense, useRef, } from 'react'
 import { useLoader, useFrame } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
-import model_ryan from '../../models/ryan.glb'
-
-// Convert GLTF to GLB https://glb-packer.glitch.me/
-// GLB combines the .GLTF model and the .BIN file into a single data object that can be imported by THREE
+import model_static from '../../models/mario.glb'
 
 const Model = ({fileRef}) => {
   
   const modelRef = useRef();
 
   const gltf = useLoader(GLTFLoader, fileRef)
-
+  
 
   useFrame(() => {
     modelRef.current.rotation.y += 0.02
   })
 
-  const modelPos = [0, 0, 4];
+  // Mario model is huuuge
+  const modelPos = [0, 20, -100];
+  const modelScale = [0.05,0.05,0.05];
 
   return (
-    <group ref={modelRef} position={modelPos}>
-      <primitive object={gltf.scene} position={[0, 0, 0]} />
+    <group ref={modelRef} position={modelPos} scale={modelScale}>
+      <primitive object={gltf.scene}/>
     </group>
   )
 
@@ -41,7 +40,7 @@ const Loader = () => {
 
 export const ModelStatic = () => {
   
-  const modelFile = model_ryan;
+  const modelFile = model_static;
 
     return (
       <group>
@@ -76,6 +75,6 @@ export default {
     metadata:{
       name: 'Model(STATIC)',
       author: '',
-      description: 'Loads static model of I.E. The Wonderlulunki using React.Suspense and external .glb files.',
+      description: 'Loads static model of Mario using React.Suspense and external .glb files. Model credit: Captain LowPoly on sketchfab',
     },
 };

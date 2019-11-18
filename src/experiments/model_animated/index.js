@@ -118,7 +118,7 @@ export default {
   id: 'model_test',
   component: ModelTest,
   metadata: {
-    name: 'Model Animated',
+    name: 'Model Animated (SUSPENSE)',
     author: '',
     description:
       'Loads (large) animated dragon using React.Suspense and external .glb files. Model credit: elly77ellison on sketchfab',

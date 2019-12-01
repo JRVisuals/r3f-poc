@@ -70,6 +70,8 @@ const App = () => {
   return (
     <Router>
       <div className="App">
+        <div id="vrButton" className="vrButtonContainer" />
+
         <Switch>
           <Route
             path="/experiments/:id/full"

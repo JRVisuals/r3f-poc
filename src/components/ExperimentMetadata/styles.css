@@ -1,7 +1,7 @@
 .Experiment__Metadata {
   position: absolute;
   z-index: 100;
-  bottom: 20px;
+  bottom: 100px;
   left: 20px;
   display: flex;
   flex-direction: column;
